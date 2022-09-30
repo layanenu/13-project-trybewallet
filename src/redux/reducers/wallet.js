@@ -2,7 +2,7 @@
 // import { GET_DESPESA } from '../actions/index';
 
 const INITIAL_STATE = {
-  despesaTotal: 0,
+  teste: '',
 };
 
 // Coloca a despesa porque vai precisar ir aumentando a despesa no header
