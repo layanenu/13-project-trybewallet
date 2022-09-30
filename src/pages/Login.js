@@ -21,7 +21,7 @@ class Login extends React.Component {
     const verifyEmail = regex.test(email); // true
     const minCharactersPassword = 6;
     const verifyPassword = password.length >= minCharactersPassword; // true
-    this.setState({ isBtnDisabled: !verifyEmail && verifyPassword }); // false
+    this.setState({ isBtnDisabled: !(verifyEmail && verifyPassword) }); // false
   };
 
   handleBtn = (e) => {
