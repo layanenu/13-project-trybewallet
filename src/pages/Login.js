@@ -1,5 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { getEmail } from '../redux/actions';
 
 class Login extends React.Component {
   state = {
@@ -18,9 +20,8 @@ class Login extends React.Component {
     const regex = /\S+@\S+\.\S+/;
     const verifyEmail = regex.test(email); // true
     const minCharactersPassword = 6;
-    const verifyPassword = password.length > minCharactersPassword; // true
-    const btnState = verifyEmail && verifyPassword; // true
-    this.setState({ isBtnDisabled: !(btnState) }); // false
+    const verifyPassword = password.length >= minCharactersPassword; // true
+    this.setState({ isBtnDisabled: !verifyEmail && verifyPassword }); // false
   };
 
   handleBtn = (e) => {
@@ -33,25 +34,25 @@ class Login extends React.Component {
   };
 
   render() {
-    const { isBtnDisabled, email, password } = this.state;
+    const { isBtnDisabled } = this.state;
     return (
       <form>
         <input
-          type="email"
-          value={ email }
           data-testid="email-input"
+          type="email"
+          name="email"
           onChange={ this.handleInput }
         />
         <input
-          type="password"
-          value={ password }
           data-testid="password-input"
+          type="password"
+          name="password"
           onChange={ this.handleInput }
         />
         <button
           type="submit"
-          onClick={ this.handleBtn }
           disabled={ isBtnDisabled }
+          onClick={ this.handleBtn }
         >
           Entrar
         </button>
