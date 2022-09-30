@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 class Header extends Component {
   render() {
-    const { email, despesaTotal } = this.props;
+    // const { email, despesaTotal } = this.props;
     return (
       <div>
         <h2
