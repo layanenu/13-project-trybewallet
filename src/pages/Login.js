@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { getEmail, getRequest } from '../redux/actions';
+import { getEmail } from '../redux/actions';
 
 class Login extends React.Component {
   state = {
@@ -26,10 +26,10 @@ class Login extends React.Component {
 
   handleBtn = (e) => {
     e.preventDefault();
-    const { history, dispatch } = this.props;
+    const { history, dispatch } = this.props; // Foi usado o dispatch para pegar o email, e o history para ao clicar no botao ir para a pagina de carteira
     const { email } = this.state;
     dispatch(getEmail(email));
-    dispatch(getRequest());
+    // dispatch(getRequest()); // faz a requisicao ao clicar no botao
     history.push('/carteira');
   };
 

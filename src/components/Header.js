@@ -4,7 +4,8 @@ import { connect } from 'react-redux';
 
 class Header extends Component {
   render() {
-    const { email } = this.props;
+    const { email, totalDespesas } = this.props;
+    // console.log(totalDespesas);
     return (
       <div>
         <p
@@ -15,7 +16,7 @@ class Header extends Component {
         <p
           data-testid="total-field"
         >
-          0
+          {totalDespesas}
         </p>
         <p
           data-testid="header-currency-field"
@@ -29,12 +30,13 @@ class Header extends Component {
 
 Header.propTypes = {
   email: PropTypes.string,
+  totalDespesas: PropTypes.number,
 }.isRequired;
 
-// Para renderizar o email (que esta na store) para colocar no header
+// Para renderizar o email e a despesa total (que esta na store) para colocar no header
 const mapStateToProps = (state) => ({
   email: state.user.email,
-  // despesaTotal: state.wallet.despesaTotal,
+  totalDespesas: state.user.totalDespesas,
 });
 // chave que vou passar para o componente
 // nome do reducer
