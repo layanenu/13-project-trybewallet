@@ -1,19 +1,23 @@
 // Esse reducer será responsável por tratar o todas as informações relacionadas as despesas
-// import { GET_DESPESA } from '../actions/index';
+import { INITIAL_GET, GET_API } from '../actions/index';
 
 const INITIAL_STATE = {
-  teste: '',
+  currencies: [],
+  loading: false,
 };
 
-// Coloca a despesa porque vai precisar ir aumentando a despesa no header
-// conforme vai colocando items na carteira
 const wallet = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-  // case GET_DESPESA:
-  //   return {
-  //     ...state,
-  //     despesa: action.payload,
-  //   };
+  case INITIAL_GET:
+    return {
+      ...state,
+      loading: true,
+    };
+  case GET_API:
+    return {
+      ...state,
+      currencies: action.payload,
+    };
   default:
     return state;
   }
