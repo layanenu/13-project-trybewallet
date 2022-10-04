@@ -1,11 +1,22 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { buttonExclui, subtraiDespesa } from '../redux/actions';
 
 class Table extends Component {
+  handleClick = (id) => {
+    const { dispatch, expenses } = this.props;
+    const newExpense = expenses.filter((element) => (element.id !== id));
+    const subExpense = expenses.find((element) => (element.id === id));
+    const currency = Number(
+      subExpense.exchangeRates[subExpense.currency].ask,
+    );
+    dispatch(buttonExclui(newExpense));
+    dispatch(subtraiDespesa(currency * subExpense.value));
+  };
+
   render() {
     const { expenses } = this.props;
-    console.log(expenses);
     return (
       <div>
         <table>
@@ -43,6 +54,15 @@ class Table extends Component {
                   <td>{currency.toFixed(2)}</td>
                   <td>{currencyConversion.toFixed(2)}</td>
                   <td>Real</td>
+                  <td>
+                    <button
+                      type="button"
+                      data-testid="delete-btn"
+                      onClick={ () => this.handleClick(element.id) }
+                    >
+                      Excluir
+                    </button>
+                  </td>
                 </tr>
               );
             })}
@@ -59,6 +79,7 @@ Table.propTypes = {
 
 const mapStateToProps = (state) => ({
   expenses: state.wallet.expenses,
+  totalDespesas: state.user.totalDespesas,
 });
 
 export default connect(mapStateToProps)(Table);

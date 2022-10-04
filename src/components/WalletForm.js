@@ -11,7 +11,6 @@ class WalletForm extends Component {
     method: 'Dinheiro',
     tag: 'Alimentação',
     description: '',
-    // exchangeRates: '',
   };
 
   componentDidMount() {
@@ -25,7 +24,6 @@ class WalletForm extends Component {
   };
 
   handleClick = () => {
-    // e.preventDefault();
     const { dispatch } = this.props;
     const { id } = this.state;
     dispatch(getRequestApiCotacao(this.state));
@@ -37,12 +35,10 @@ class WalletForm extends Component {
       tag: 'Alimentação',
       description: '',
     });
-    // dispatch(getRequest());
   };
 
   render() {
     const { currencies } = this.props; // Vem do estado global
-    // console.log(currencies);
     const { value, currency, method, tag, description } = this.state;
 
     return (

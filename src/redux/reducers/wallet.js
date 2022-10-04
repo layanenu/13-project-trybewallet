@@ -1,5 +1,10 @@
 // Esse reducer será responsável por tratar o todas as informações relacionadas as despesas
-import { INITIAL_GET, GET_API, SUBMIT_WALLET_FORM } from '../actions/index';
+import {
+  INITIAL_GET,
+  GET_API,
+  SUBMIT_WALLET_FORM,
+  BUTTON_EXCLUI,
+} from '../actions/index';
 
 const INITIAL_STATE = {
   currencies: [], // array de string
@@ -26,6 +31,11 @@ const wallet = (state = INITIAL_STATE, action) => {
       expenses: [...state.expenses, action.payload],
     };
   }
+  case BUTTON_EXCLUI:
+    return {
+      ...state,
+      expenses: action.payload,
+    };
   default:
     return state;
   }

@@ -7,6 +7,8 @@ export const GET_API = 'GET_API';
 export const FAIL_REQ = 'FAIL_REQ';
 export const SUBMIT_WALLET_FORM = 'SUBMIT_WALLET_FORM';
 export const TOTAL_DESPESAS = 'TOTAL_DESPESAS';
+export const BUTTON_EXCLUI = 'BUTTON_EXCLUI';
+export const SUB_DESPESA = 'SUB_DESPESA';
 
 // ACTIONS CREATORS
 // Action para pegar o email -> reducer user
@@ -27,6 +29,12 @@ export const submitWalletForm = (expenses) => (
 
 // Action para somar as despesas
 export const totalDespesas = (payload) => ({ type: TOTAL_DESPESAS, payload });
+
+// Action para butão de excluir
+export const buttonExclui = (payload) => ({ type: BUTTON_EXCLUI, payload });
+
+// Action para butão de excluir
+export const subtraiDespesa = (payload) => ({ type: SUB_DESPESA, payload });
 
 // THUNK PARA PEGAR OS TIPOS DE MOEDAS
 export const getRequest = () => async (dispatch) => {

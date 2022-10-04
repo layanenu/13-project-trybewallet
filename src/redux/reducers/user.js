@@ -1,4 +1,4 @@
-import { GET_EMAIL, TOTAL_DESPESAS } from '../actions/index';
+import { GET_EMAIL, TOTAL_DESPESAS, SUB_DESPESA } from '../actions/index';
 
 const INITIAL_STATE = {
   email: '', // string que armazena o email da pessoa usuária
@@ -14,12 +14,19 @@ const user = (state = INITIAL_STATE, action) => {
       email: action.payload,
     };
   case TOTAL_DESPESAS: {
-    console.log(state, action);
+    // console.log(state, action);
     const somaDespesas = (Number(state.totalDespesas) + Number(action.payload));
-    console.log(somaDespesas);
+    // console.log(somaDespesas);
     return {
       ...state,
       totalDespesas: somaDespesas.toFixed(2),
+    };
+  }
+  case SUB_DESPESA: {
+    const subDespesas = Math.abs((Number(state.totalDespesas) - Number(action.payload)));
+    return {
+      ...state,
+      totalDespesas: subDespesas.toFixed(2),
     };
   }
   default:
