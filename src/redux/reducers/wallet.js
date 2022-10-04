@@ -21,7 +21,6 @@ const wallet = (state = INITIAL_STATE, action) => {
     };
   }
   case SUBMIT_WALLET_FORM: {
-    // console.log(action);
     return {
       ...state,
       expenses: [...state.expenses, action.payload],
